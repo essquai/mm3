@@ -1,5 +1,5 @@
 # mm3
-The Modded Modula-3 compiler is derived from [Critical Mass Modula-3] (https://github.com/modula3/cm3) and includes
+The Modded Modula-3 compiler is derived from [Critical Mass Modula-3](https://github.com/modula3/cm3) and includes
 a a couple of minor packaging related enhancements.
 
 ## Quake
@@ -31,13 +31,13 @@ Packaging for mm3 boils down to a single script: mm3pkg.py. It can create three 
 creates an installation archive from source. It can also create a source distribution. Finally, since mm3 is a Modula-3 compiler
 written in Modula-3, it can create a bootstrap package consisting of mm3 itself compiler to C bootstrap source code.
 
-**mm3* is just the compiler from cm3. The fourth and final piece of this packaging script will
+**mm3** only includes the compiler from cm3. The fourth and final piece of this packaging script will
 install packages from the [cm3 fork](https://github.com/essquai/cm3) to your mm3 site installation.
 
 ## LLVM backend
 The LLVM release 18 backend included in cm3 didn't compile. On one hand, the version in mm3 was mangled enough to
-compile and build. Other hand it doesn work, but looks like a linkage problem between the gcc and llvm worlds.
+compile and build. Other hand it doesn work, has appearance of a linkage incompatibility between the gcc and llvm worlds.
 Building mm3 purely with *clang* actually makes the problem worse, not better.
 
-This code included simply to serve as a reference
+This LLVM backend code included simply to serve as a reference
 for other or perhaps simpler intermediate representation back ends.
