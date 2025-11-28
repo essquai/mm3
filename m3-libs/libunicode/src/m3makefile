@@ -1,0 +1,45 @@
+% Copyright (C) 2013, Rodney M. Bates 
+% rodney.m.bates@acm.org 
+% Licensed under the MIT License. 
+
+% m3makefile for libunicode. 
+
+local Unicode = "TRUE" %May change. 
+
+if not defined("Unicode_WIDECHAR") 
+  Unicode = ""
+else
+  if empty (Unicode_WIDECHAR) 
+    Unicode = ""
+  end
+end  
+
+if Unicode 
+
+  % Compiler is configured for Unicode WIDECHAR. Build libunicode. 
+  import ("m3core")
+  import ("libm3")
+
+  Module("UniEncoding")
+
+  Module("UniCodec")
+  Module("UnsafeUniCodec")
+
+  Module("UniRd")
+  Module("UnsafeUniRd")
+  Interface("UniRdClass")
+
+  Module("UniWr")
+  Module("UnsafeUniWr")
+  Interface("UniWrClass")
+
+  Library ("unicode") 
+
+else 
+  % Compiler is configured for 16-bit WIDECHAR. Don't build anything.
+  write ("\nNot building libunicode because WIDECHAR is only 16-bit.\n\n")
+
+end 
+
+
+

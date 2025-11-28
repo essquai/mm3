@@ -1,0 +1,7 @@
+import ("libm3")
+import ("m3middle")
+
+implementation ("Main")
+
+build_standalone ()
+Program ("mklib")

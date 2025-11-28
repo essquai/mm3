@@ -1,0 +1,107 @@
+.TH mm3 7 19-Nov-2025 "essquai" "MODULA-3 PROGRAMMERS MANUAL"
+./ =============== NAME ===============
+.SH NAME
+mm3 - Modded Modula-3 Compiler
+.SH DESCRIPTION
+The
+.B mm3
+compiler is a fork of 
+.B cm3
+, the Critical Mass Modula-3 Compiler which 
+itself descends from the original (in multiple senses of the word) 
+created by Digital Equipment Corp. and Olivetti Corp.
+
+This manual page outlines the modifications to cm3 that yield mm3.
+./ =============== MODIFICATIONS ===============
+.SH MODIFICATIONS
+
+.SS Dependencies
+
+Use a new Modded Modula-3 quake scripting directive to import
+packages from other contributors into your project.
+
+.TP
+.BI "require( URI, VERSION )"
+installs the source package at the given URI and VERSION into
+your site and imports it into your project. The URI may belong to one 
+of the following schemes:
+.IP
+  * files://root/pkg
+.IP
+  * fossil://site/pkg
+.IP
+  * git://site/pkg
+.IP
+  * hg://site/pkg
+
+In the above, root is an absolute local directory name, site is the
+domain name of a fossil/git/mercury server, and pkg is the name of
+the repository in that directory or server. The VERSION parameter
+is used to pull a specific version dependency from
+the Distributed Version Control Server repo;
+for files, it is simply appended to the installed package
+name.
+
+.SS Archiving
+
+An archive utility in the scripts directory reproduces both the compiler
+and distribution itself. It accepts three options:
+.TP
+.B boot
+creates an archive of C source code files organised so that
+cmake will build them into an executable
+.B mm3
+compiler.
+.TP
+.B dist
+generates a source code distribution archive of Modded Modula-3, 
+consisting of the C bootstrap compiler, the Modula-3 compiler's
+Modula-3 source code, and the archive script.
+.TP
+.B site
+produces an executable distribution of Modded Modula-3 from 
+source. By unpacking this archive and adding its
+.I bin
+sub-directory in your path, you've installed a Modula-3 compiler.
+.P
+All run-time elements of
+.B mm3
+are self-relative; it'll work for you wherever you put it.
+
+.SS LLVM-18
+
+Some inconsistencies with respect to release 18 of the LLVM 
+back end have been updated. Located in the m3-sys/llvm
+directory, it and its bindings must be built and shipped
+for use.  To invoke, specify:
+.IP
+-DM3-BACKEND_MODE="StAloneLLvmObj"
+.P
+on the mm3 command line.
+
+.SS Compiler Only
+
+.B mm3
+is a Modula-3 compiler only. The distribution does not incorprorate
+the module packages that accompanied 
+.B cm3
+version d5.11.9 from which it was derived.
+
+It does include the foundational package 
+.I libm3
+the compiler itself is built with. Please see the
+.I Dependencies
+modification above about importing packages.
+
+./ ============ NOTES =========
+.SH NOTES
+The quake interpreter is built into the MM3 Modula-3 compiler, 
+whereas it was a separate executable for earlier ones, such as PM3.
+
+./ ============ SEE ALSO =========
+.SH SEE ALSO
+The Modded Modula-3 compiler 
+.BR mm3 (1),
+and the manual pages for 
+.BR quake (7).
+

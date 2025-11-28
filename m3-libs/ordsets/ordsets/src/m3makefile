@@ -1,0 +1,29 @@
+% (* ----------------------------------------------------------------------1- *)
+% (* File m3makefile for test instantiation and running of OrdSets.[im]g.     *)
+% (* Copyright 2010 .. 2016, Rodney M. Bates.                                 *)
+% (* rodney.m.bates@acm.org                                                   *)
+% (* Licensed under the MIT license.                                          *)
+% (* ----------------------------------------------------------------------2- *)
+
+% option("internal_backend","")
+%^pm3 only. Disables the internal backend.
+import("libm3")
+interface("IntForOrdSets")
+interface("BitNoTable")
+generic_module("OrdSets")
+module("UnsafeUtils") 
+
+% Instantiation for integers: 
+  build_generic_intf("IntSets","OrdSets",["IntForOrdSets"],VISIBLE)
+  build_generic_impl("IntSets","OrdSets",[])
+  % module("IntSets") 
+
+% For testing that instantiation with non-integer will compile. 
+  interface("WidecharForOrdSets") 
+  build_generic_intf("WidecharSets","OrdSets",["WidecharForOrdSets"],VISIBLE)
+  build_generic_impl("WidecharSets","OrdSets",[])
+  % module("WidecharSets")          
+
+module("Sets") % Old, naive Sets module to compare results against.  
+implementation("Test") % Test program. 
+program("test") 

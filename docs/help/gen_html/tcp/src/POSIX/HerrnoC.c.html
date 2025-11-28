@@ -1,0 +1,23 @@
+<HTML><HEAD><TITLE>
+tcp/src/POSIX/HerrnoC.c</TITLE></HEAD><BODY BGCOLOR="#ffffff">
+<H2>
+tcp/src/POSIX/HerrnoC.c</H2><HR>
+<PRE>
+/*
+ * Helper functions for accessing the &quot;h_errno&quot; value.
+ */
+
+#if defined(__INTERIX) &amp;&amp; !defined(_REENTRANT)
+#define _REENTRANT
+#endif
+#include &lt;netdb.h&gt;
+
+int
+m3_Herrno_Get_h_errno(void)
+{
+    return h_errno;
+}
+
+</PRE>
+</BODY>
+</HTML>

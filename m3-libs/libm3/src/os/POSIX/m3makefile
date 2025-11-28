@@ -1,0 +1,51 @@
+% Copyright (C) 1992, Digital Equipment Corporation
+% All rights reserved.
+% See the file COPYRIGHT for a full description.
+%
+% Last modified on Sat Jan  7 14:58:01 PST 1995 by kalsow  
+%      modified on Thu Jul 14 13:10:18 PDT 1994 by mcjones 
+%      modified on Thu Jun 17 19:14:47 PDT 1993 by harrison
+%      modified on Thu May  6 21:38:22 PDT 1993 by mjordan
+
+Module("OSErrorPosix")
+
+if equal (OS_TYPE, "POSIX")
+
+Interface("OSConfig")
+
+Module("FilePosix")
+
+implementation("FSPosix")
+implementation("PipePosix")
+
+% TODO: Portable source, portable bootstrap, remove this if.
+if equal (TARGET_OS, "DJGPP")
+  % Path is like c:/foo so use ../Win32/PathnameWin32
+  implementation("SocketNone")
+else
+  implementation("SocketPosix")
+  implementation("PathnamePosix")
+end
+
+implementation("OSConfigPosix")
+
+module("ProcessPosixCommon")
+
+% Cygwin can use faster spawn sometimes instead of fork/exec.
+% TODO: Portable source, portable bootstrap, remove this if.
+if equal (TARGET_OS, "CYGWIN")
+    implementation("ProcessCygwin")
+else
+    implementation("ProcessPosix")
+end
+
+c_source("FilePosixC")
+interface("FilePosixC")
+
+interface("OSConfigPosixC")
+c_source("OSConfigPosixC")
+
+interface("FSPosixC")
+c_source("FSPosixC")
+ 
+end
