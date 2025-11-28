@@ -27,11 +27,11 @@ It enables your Modula-3 projects to link with C++.
 
 ## mm3 packaging script
 
-Packaging for mm3 boils down to a single script: mm3pkg.py. It can create thee types of archive files. Most importantly it
+Packaging for mm3 boils down to a single script: mm3pkg.py. It can create three types of archive files. Most importantly it
 creates an installation archive from source. It can also create a source distribution. Finally, since mm3 is a Modula-3 compiler
 written in Modula-3, it can create a bootstrap package consisting of mm3 itself compiler to C bootstrap source code.
 
-**mm3* is just the compiler from cm3. The final piece of this packaging script will
+**mm3* is just the compiler from cm3. The fourth and final piece of this packaging script will
 install packages from the [cm3 fork](https://github.com/essquai/cm3) to your mm3 site installation.
 
 ## LLVM backend
