@@ -12,6 +12,7 @@ installed - and then imported. The *URI* may be of the form:
 * fossil://*site*/pkg
 * git://*site*/pkg
 * hg://*site/pkg
+
 where *root* is an absolute local directory name, *site* is the domain of a fossil/git/mercury server, and pkg is the
 repository name. The *VERSION* parameter pulls a specific version dependency from
 the Distributed Version Control Server repo; for files, it is simply appended to the installed package name if
