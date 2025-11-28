@@ -1,6 +1,6 @@
 # mm3
 The Modded Modula-3 compiler is derived from [Critical Mass Modula-3](https://github.com/modula3/cm3) and includes
-a a couple of minor packaging related enhancements.
+a couple of minor packaging related enhancements.
 
 ## Quake
 **mm3** incorporates two new m3makefile/quake builtins.
