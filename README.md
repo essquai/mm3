@@ -4,9 +4,9 @@ a couple of minor packaging related enhancements. See headings below for modific
 
 ```bash
 # tools required: python, cmake, C
-xz -d mm3-src-m5.12.0.tar.xz
-tar xf mm3-src-m5.12.0.tar
-cd mm3-src-m5.12.0
+xz -d mm3-src-m5.12.1.tar.xz
+tar xf mm3-src-m5.12.1.tar
+cd mm3-src-m5.12.1
 scripts/mm3pkg.py bin
 ```
 Unpack the mm3-bin archive somewhere convenient, put its bin sub-dir in your path, invoke 'mm3 -version'.
@@ -27,7 +27,7 @@ repository name. The *VERSION* parameter pulls a specific version dependency fro
 the Distributed Version Control Server repo; for files, it is simply appended to the installed package name if
 not the empty string.
 
-Yes - *require* is a keyword also used in *go.mod* files.
+The *require* keyword styling is by go.mod
 ### cpp_source( "name" )
 This builtin incorporates a C++ file into your Modula-3 library or program. As Modula-3 links directly to C functions
 with the  EXTERNAL compiler pragma, such functions embedded in *extern "C" {}* in .cpp files may in turn invoke C++ entry points.
@@ -50,3 +50,5 @@ Building mm3 purely with *clang* actually makes the problem worse, not better.
 
 This LLVM backend code included simply to serve as a reference
 for other or perhaps simpler intermediate representation back ends.
+## Modula-3
+Not modified.

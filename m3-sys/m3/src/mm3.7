@@ -53,12 +53,12 @@ cmake will build them into an executable
 .B mm3
 compiler.
 .TP
-.B dist
+.B src
 generates a source code distribution archive of Modded Modula-3, 
 consisting of the C bootstrap compiler, the Modula-3 compiler's
 Modula-3 source code, and the archive script.
 .TP
-.B site
+.B bin
 produces an executable distribution of Modded Modula-3 from 
 source. By unpacking this archive and adding its
 .I bin
@@ -69,6 +69,8 @@ All run-time elements of
 are self-relative; it'll work for you wherever you put it.
 
 .SS LLVM-18
+
+Does NOT work.
 
 Some inconsistencies with respect to release 18 of the LLVM 
 back end have been updated. Located in the m3-sys/llvm
