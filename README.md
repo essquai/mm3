@@ -1,6 +1,15 @@
 # mm3
 The Modded Modula-3 compiler is derived from [Critical Mass Modula-3](https://github.com/modula3/cm3) and includes
-a couple of minor packaging related enhancements.
+a couple of minor packaging related enhancements. See headings below for modifications. Install from mm3-src* packages which include the bootstrap C source:
+
+```bash
+# tools required: python, cmake, C
+xz -d mm3-src-m5.12.0.tar.xz
+tar xf mm3-src-m5.12.0.tar
+cd mm3-src-m5.12.0
+scripts/mm3pkg.py bin
+```
+Unpack the mm3-bin archive somewhere convenient, put its bin sub-dir in your path, invoke 'mm3 -version'.
 
 ## Quake
 **mm3** incorporates two new m3makefile/quake builtins.
