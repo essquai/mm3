@@ -34,6 +34,14 @@ with the  EXTERNAL compiler pragma, such functions embedded in *extern "C" {}* i
 
 It enables your Modula-3 projects to link with C++.
 
+## m3mod package
+
+A companion to the m3core package for **mm3**, it provides smaller integer
+types and sequences, cyclic redundancy checks, thread-safe message queues,
+and Edwards 25519 procedures for key exchange and verification.
+
+More readme details are available in the normal *m3-libs* location.
+
 ## mm3 packaging script
 
 Packaging for mm3 boils down to a single script: mm3pkg.py. It can create three types of archive files. Most importantly it
