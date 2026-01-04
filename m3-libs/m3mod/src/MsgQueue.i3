@@ -1,4 +1,4 @@
-INTERFACE MessageQ;
+INTERFACE MsgQueue;
 
 TYPE 
 
@@ -12,9 +12,10 @@ TYPE
   METHODS
     append(m : Msg);
     remove(VAR m : Msg);
+    size() : CARDINAL;
   END;
 
 
-PROCEDURE New(n : CARDINAL) : T;
+PROCEDURE New(n : CARDINAL := 3) : T;
 
-END MessageQ.
+END MsgQueue.

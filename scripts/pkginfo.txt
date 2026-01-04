@@ -1,4 +1,5 @@
 m3core base core front headless min unicode
+m3mod base core headless
 libm3 base core front headless min unicode
 set base core front headless
 windowsResources core headless

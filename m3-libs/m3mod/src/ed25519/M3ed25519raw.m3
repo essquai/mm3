@@ -1,0 +1,4 @@
+MODULE M3ed25519raw;
+
+BEGIN
+END M3ed25519raw.

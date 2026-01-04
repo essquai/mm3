@@ -1,7 +1,7 @@
 import("m3core")
 import("libm3")
-import ("MessageQ")
+import("m3mod")
 
 implementation("Main")
 
-program("mqtst")
+program("test")

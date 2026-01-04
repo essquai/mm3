@@ -1,0 +1,47 @@
+%
+% types
+%
+Module ("Byte")
+Module ("Int16")
+Module ("Uint16")
+Module ("Uint32")
+
+%
+% type sequences
+%
+import ("libm3")
+build_generic_intf("ByteSeq",   "Sequence",    ["Byte"], VISIBLE)
+build_generic_intf("ByteRep",   "SequenceRep", ["Byte", "ByteSeq"], VISIBLE)
+build_generic_impl("ByteSeq",   "Sequence",    ["Byte", "ByteSeq", "ByteRep"])
+
+build_generic_intf("Uint16Seq", "Sequence",    ["Uint16"], VISIBLE)
+build_generic_intf("Uint16Rep", "SequenceRep", ["Uint16", "Uint16Seq"], VISIBLE)
+build_generic_impl("Uint16Seq", "Sequence",    ["Uint16", "Uint16Seq", "Uint16Rep"])
+
+build_generic_intf("Int16Seq",  "Sequence",    ["Int16"], VISIBLE)
+build_generic_intf("Int16Rep",  "SequenceRep", ["Int16", "Int16Seq"], VISIBLE)
+build_generic_impl("Int16Seq",  "Sequence",    ["Int16", "Int16Seq", "Int16Rep"])
+
+build_generic_intf("Uint32Seq", "Sequence",    ["Uint32"], VISIBLE)
+build_generic_intf("Uint32Rep", "SequenceRep", ["Uint32", "Uint32Seq"], VISIBLE)
+build_generic_impl("Uint32Seq", "Sequence",    ["Uint32", "Uint32Seq", "Uint32Rep"])
+
+%
+% Cyclic Redudancy Check
+%
+import ("m3core")
+Module ("CRC")
+
+%
+% Message Queue
+%
+Module ("MsgQueue")
+
+%
+% Edwards 25519 curves - C bindings
+%
+include_dir ("ed25519")
+
+% Package
+Library ("m3mod")
+

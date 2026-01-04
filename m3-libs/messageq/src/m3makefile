@@ -1,3 +1,0 @@
-import("m3core")
-module("MessageQ")
-library("MessageQ")

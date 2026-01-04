@@ -1,4 +1,4 @@
-MODULE MessageQ;
+MODULE MsgQueue;
 
 IMPORT Thread;
 
@@ -14,10 +14,11 @@ REVEAL
   OVERRIDES
     append := Append;
     remove := Remove;
+    size   := Size;
   END;
 
 
-PROCEDURE New(n : CARDINAL) : T =
+PROCEDURE New(n : CARDINAL := 3) : T =
   VAR q : T;
   BEGIN
     q          := NEW(T);
@@ -57,5 +58,15 @@ PROCEDURE Remove(q : T; VAR m : Msg) =
     Thread.Signal(q.nonfull);
   END Remove;
 
+PROCEDURE Size(q : T) : CARDINAL = 
+  VAR s : CARDINAL;
+  BEGIN
+    LOCK q DO
+      s := q.count;
+    END;
+    RETURN s;
+  END Size;
+
+
 BEGIN
-END MessageQ.
+END MsgQueue.

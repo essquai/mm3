@@ -1,0 +1,7 @@
+import  ("libm3")
+import  ("m3core")
+import  ("m3mod")
+
+implementation("Main")
+
+program  ("test")

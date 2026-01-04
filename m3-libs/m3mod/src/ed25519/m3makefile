@@ -1,0 +1,25 @@
+import  ("libm3")
+import  ("m3core")
+
+h_source("ed25519")
+h_source("fe")
+h_source("fixedint")
+h_source("ge")
+h_source("precomp_data")
+h_source("sc")
+h_source("sha512")
+
+c_source ("add_scalar")
+c_source ("fe")
+c_source ("ge")
+c_source ("key_exchange")
+c_source ("keypair")
+c_source ("sc")
+c_source ("seed")
+c_source ("sha512")
+c_source ("sign")
+c_source ("verify")
+
+module   ("M3ed25519raw")
+module   ("M3ed25519")
+

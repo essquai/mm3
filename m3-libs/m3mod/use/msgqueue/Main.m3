@@ -1,6 +1,6 @@
 MODULE Main;
 
-IMPORT MessageQ;
+IMPORT MsgQueue;
 IMPORT Thread;
 IMPORT Fmt, IO, Wr;
 
@@ -22,13 +22,13 @@ VAR
 TYPE
   Sender = Thread.Closure OBJECT
 	  t : CARDINAL;
-	  q : MessageQ.T;
+	  q : MsgQueue.T;
 	OVERRIDES
 	  apply := EnqueueF;
   END;
 
 PROCEDURE EnqueueF(self : Sender) : REFANY =
-  VAR elem : MessageQ.Msg; r : MqMsg;
+  VAR elem : MsgQueue.Msg; r : MqMsg;
   BEGIN
     FOR s := 1 TO MSG DO
 	  r := NEW(MqMsg);
@@ -53,8 +53,8 @@ PROCEDURE EnqueueF(self : Sender) : REFANY =
  *)
 PROCEDURE Test() =
   VAR
-    queue := MessageQ.New(QSIZE);
-	m : MessageQ.Msg;
+    queue := MsgQueue.New(QSIZE);
+	m : MsgQueue.Msg;
 	r : MqMsg;
 	thr : Sender;
   BEGIN
