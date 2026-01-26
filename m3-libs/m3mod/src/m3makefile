@@ -38,6 +38,11 @@ Module ("CRC")
 Module ("MsgQueue")
 
 %
+%
+% Pool
+%
+Module ("Pool")
+
 % Edwards 25519 curves - C bindings
 %
 include_dir ("ed25519")
