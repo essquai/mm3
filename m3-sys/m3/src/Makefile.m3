@@ -410,8 +410,8 @@ PROCEDURE ProcessDefine (arg: TEXT;  wr: Wr.T)
 CONST
   SourceTag = ARRAY NK OF TEXT {
     NIL,                                                   (* unknown *)
-    "interface", NIL, NIL, NIL, "import_obj",              (* i3, ib, ic, is, io *)
-    "implementation", NIL, NIL, NIL, "import_obj",         (* m3, mb, mc, ms, mo *)
+    "interface", NIL, NIL, NIL, "import_obj", NIL,         (* i3, ib, ic, is, io, iw *)
+    "implementation", NIL, NIL, NIL, "import_obj", NIL,    (* m3, mb, mc, ms, mo, mw *)
     "generic_interface", "generic_implementation",         (* ig, mg *)
     "c_source", "cpp_source", "h_source", NIL, "s_source", "import_obj", (* c, cpp, h, b, s, o *)
     "import_lib", "import_lib", NIL,                       (* m3lib, lib, m3x *)

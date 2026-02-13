@@ -263,6 +263,7 @@ PROCEDURE InitCallingConventions(backend_mode: M3BackendMode_t;
                                  target_has_calling_conventions: BOOLEAN) =
   VAR integrated := backend_mode IN BackendIntegratedSet;
   VAR llvm := backend_mode IN BackendLlvmSet;
+  VAR wasm := backend_mode IN BackendWasmSet;
 
   PROCEDURE New(name: TEXT; id: [0..1]): CallingConvention =
     VAR cc := NEW(CallingConvention, name := name);
@@ -285,6 +286,10 @@ PROCEDURE InitCallingConventions(backend_mode: M3BackendMode_t;
         cc.args_left_to_right := FALSE;
         cc.results_on_left    := TRUE;
         cc.standard_structs   := FALSE;
+      ELSIF wasm THEN
+        cc.args_left_to_right := TRUE;
+        cc.results_on_left    := FALSE;
+        cc.standard_structs   := TRUE;
       ELSE (* gcc-derived back end. *)
         cc.args_left_to_right := TRUE;
         cc.results_on_left    := FALSE;

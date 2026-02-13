@@ -59,8 +59,9 @@ TYPE
        translate it to llvm IR. *) 
     StAloneLlvmObj,     (* "9"  -- call m3llvm, then call compile_llvm. 
                                    It produces object code. *) 
-    StAloneLlvmAsm      (* "10" -- call m3llvm, then call compile_llvm. 
+    StAloneLlvmAsm,     (* "10" -- call m3llvm, then call compile_llvm. 
                                    It produces assembly code, run asm. *) 
+    StAloneWasm         (* "11" -- call m3wasm it produces WebAssembly *)
   };
 
 CONST
@@ -75,7 +76,8 @@ CONST
     "ExtLlvmObj", 
     "ExtLlvmAsm",
     "StAloneLlvmObj",
-    "StAloneLlvmAsm" 
+    "StAloneLlvmAsm",
+    "StAloneWasm" 
    };
 
   TYPE MT = M3BackendMode_t; 
@@ -88,6 +90,9 @@ CONST
   CONST BackendM3ccSet = SET OF M3BackendMode_t 
     { MT.ExternalObject, MT.ExternalAssembly }; 
     (* Modes using the external gcc-derived code generator m3cc. *)
+
+  CONST BackendWasmSet = SET OF M3BackendMode_t { MT.StAloneWasm };
+    (* Modes using standalone translator m3wasm, from cm3 IR to Web Assembly. *)
 
   CONST BackendLlvmSet = SET OF M3BackendMode_t 
     { MT.ExtLlvmObj, MT.ExtLlvmAsm, MT.IntLlvmObj, MT.IntLlvmAsm}; 
@@ -121,17 +126,18 @@ CONST
       MT.IntLlvmObj,
       MT.IntLlvmAsm,
       MT.StAloneLlvmObj,
-      MT.StAloneLlvmAsm
+      MT.StAloneLlvmAsm,
+      MT.StAloneWasm
     }; 
   
 (* Provoke compile errors: *) 
   BackendIntegratedXXX
     = ARRAY M3BackendMode_t OF BOOLEAN 
-        { TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE };
+        { TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE };
 
   BackendUsesLlvmXXX 
     = ARRAY M3BackendMode_t OF BOOLEAN 
-        { FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE };
+        { FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE };
 
   (* BackendAssembly = ARRAY M3BackendMode_t OF BOOLEAN { FALSE, TRUE, FALSE, TRUE, FALSE };  *)
 

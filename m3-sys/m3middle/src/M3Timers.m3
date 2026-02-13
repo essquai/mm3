@@ -28,6 +28,7 @@ PROCEDURE Start () =
     pass_7   := ETimer.New ("compiling assembly -> object");
     llc      := ETimer.New ("compiling LLVM IL -> assembly");
     llvmopt  := ETimer.New ("optimising LLVM IL");
+    m3wasm   := ETimer.New ("compiling IL -> WASM");
     m3llvm   := ETimer.New ("compiling IL -> LLVM IL");
     pass_6   := ETimer.New ("compiling IL -> assembly");
     emit     := ETimer.New ("  emitting code");

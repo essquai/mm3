@@ -1,0 +1,11 @@
+import("libm3")
+import("m3middle")
+import("m3back")
+import("m3quake")
+import("wasm108lib")
+
+module("M3CG_WASM")
+
+implementation("Main")
+
+Program("m3wasm")

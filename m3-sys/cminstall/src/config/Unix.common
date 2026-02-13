@@ -123,6 +123,32 @@ end
 
 end
 
+%--------------------------------------------------------- m3wasm ------------
+% Optionally, "m3wasm" is called to translate cm3 IR to Web Assembly.
+
+if not defined("m3wasm")
+
+  proc m3wasm(source, outfile, optimize, debug) is
+  % will we ever need optimize and/or debug?
+
+      local m3wasmname = "@m3wasm"
+
+      local args = [ "-b" ]
+
+      if debug
+        args += "-g"
+      end
+
+      % add the target to the m3wasm call.
+      args += "-t " & TARGET
+
+      args += "-d" %While m3was is under development.
+
+      return try_exec (m3wasmname, args, "-o", outfile, source )
+  end % proc m3wasm
+
+end % if not defined("m3wasm")
+
 %--------------------------------------------------------- m3llvm ------------
 % Optionally, "m3llvm" is called to translate cm3 IR to llvm IR.
 
