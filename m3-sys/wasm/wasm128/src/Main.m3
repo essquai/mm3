@@ -1,7 +1,7 @@
 MODULE Main;
 
 IMPORT AtomList, FileRd, OSError;
-IMPORT IO, Process, Rd, Stdio, Text, Wr;
+IMPORT IO, Process, Rd, Stdio, Text, Wr, Unix;
 IMPORT Params;
 
 IMPORT M3CG_Rd, M3CG_BinRd, MxConfig, Target;
@@ -305,10 +305,9 @@ PROCEDURE WriteOpenFailure (FileDescr, FileName: TEXT; Code: AtomList.T) =
     IO.Put(Wr.EOL);
   END WriteOpenFailure;
 
-PROCEDURE DoIt () =
+PROCEDURE DoIt () : INTEGER =
   VAR
     rd_in : Rd.T := NIL;
-    WasmDebugLev: INTEGER;
     cg          : M3CG_WASM.T;
     triple      : TEXT;
     targetIndex : INTEGER;
@@ -336,7 +335,7 @@ PROCEDURE DoIt () =
       EXCEPT
         OSError.E (Code (*AtomList.T*)) =>
           WriteOpenFailure("input file", GInFileName, Code);
-          RETURN;
+          RETURN 1;
       END (*EXCEPT*);
     END (*IF*);
 
@@ -349,13 +348,7 @@ PROCEDURE DoIt () =
       GBinOutFileName := DefaultBinOutFileName;
     END (*IF*);
 
-    IF GDebugM3wasm THEN
-      WasmDebugLev := 3;
-    ELSE
-      WasmDebugLev := 0;
-    END;
-
-    cg := M3CG_WASM.New(WasmDebugLev, GGenDebug);
+    cg := M3CG_WASM.New(GDebugM3wasm, GGenDebug);
 
     IF GInIsBinary THEN
       M3CG_BinRd.Inhale(rd_in, cg);
@@ -363,7 +356,7 @@ PROCEDURE DoIt () =
       M3CG_Rd.Inhale(rd_in, cg);
     END (*IF*);
 
-    cg.moduleWrite(GBinOutFileName, GCharOutFileName);
+    RETURN cg.module_write(GBinOutFileName, GCharOutFileName);
   END DoIt;
 
 PROCEDURE Init () =
@@ -390,6 +383,6 @@ BEGIN
   ELSIF GDoDisplayVersion THEN
     DisplayVersion();
   ELSE
-    DoIt();
+    Unix.exit(DoIt());
   END;
 END Main.

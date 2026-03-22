@@ -7,9 +7,9 @@ IMPORT M3CG;
 TYPE T <: Public;
 TYPE Public = M3CG.T OBJECT
   METHODS
-    moduleWrite(binFileName, textFileName: TEXT);
+    module_write(binFileName, textFileName: TEXT) : INTEGER;
   END;
 
-PROCEDURE New(WasmDebugLevel : INTEGER; GenDebug: BOOLEAN) : T; 
+PROCEDURE New(WasmDebug : BOOLEAN; GenDebug: BOOLEAN) : T; 
 
 END M3CG_WASM.

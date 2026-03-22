@@ -1,9 +1,0 @@
-import ("m3core")
-
-Interface ("WASM")
-c_source  ("RefWasm")
-
-LIB_DIR1 = "/usr/lib/x86_64-linux-gnu"
-import_lib("binaryen", LIB_DIR1)
-
-Library ("WASM108")
