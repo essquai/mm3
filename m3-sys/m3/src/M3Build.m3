@@ -2320,8 +2320,8 @@ PROCEDURE GenM3Exports (t: T;  header: TEXT)
   CONST HTag = ARRAY BOOLEAN OF TEXT { "", "hidden" };
   CONST KindTag = ARRAY UK OF TEXT {
      NIL,
-     "_map_add_interface", NIL, NIL, NIL, NIL, "_map_add_wasm_i",
-     "_map_add_module", NIL, NIL, NIL, NIL, "_map_add_wasm_m",
+     "_map_add_interface", NIL, NIL, NIL, NIL,
+     "_map_add_module", NIL, NIL, NIL, NIL,
      "_map_add_generic_interface", "_map_add_generic_module",
      "_map_add_c", "_map_add_cpp", "_map_add_h", NIL, "_map_add_s", NIL,
      "_import_m3lib", "_import_otherlib", NIL, NIL, NIL, "template" } ;
@@ -2358,7 +2358,7 @@ PROCEDURE GenM3Exports (t: T;  header: TEXT)
             | UK.Unknown, UK.IB, UK.IC, UK.IS, UK.MB, UK.MC, UK.MS, UK.PGM, UK.LIBX,
               UK.PGMX, UK.IO, UK.MO, UK.O, UK.B =>
                 <*ASSERT KindTag[u.kind] = NIL *>
-            | UK.I3, UK.M3, UK.IG, UK.MG, UK.C, UK.CPP, UK.H, UK.S, UK.IW, UK.MW =>
+            | UK.I3, UK.M3, UK.IG, UK.MG, UK.C, UK.CPP, UK.H, UK.S =>
                 <*ASSERT KindTag[u.kind] # NIL *>
                 Out (wr, KindTag[u.kind], "(\"");
                 Out (wr, M3Path.Convert (M3Unit.FileName (u)), QCQ);
