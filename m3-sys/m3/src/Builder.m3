@@ -836,8 +836,8 @@ TYPE SourceList = REF ARRAY OF M3Unit.T;
 CONST
   OrderMatters = ARRAY UK OF BOOLEAN {
     FALSE (*Unknown*),
-     TRUE (*I3*),     TRUE (*IB*),   TRUE (*IC*),    TRUE (*IS*),   TRUE (*IO*),   TRUE(*IW*),
-     TRUE (*M3*),     TRUE (*MB*),   TRUE (*MC*),    TRUE (*MS*),   TRUE (*MO*),   TRUE(*MW*),
+     TRUE (*I3*),     TRUE (*IB*),   TRUE (*IC*),    TRUE (*IS*),   TRUE (*IO*),
+     TRUE (*M3*),     TRUE (*MB*),   TRUE (*MC*),    TRUE (*MS*),   TRUE (*MO*),
     FALSE (*IG*),    FALSE (*MG*),
     FALSE (*C*),     FALSE (*CPP*), FALSE (*H*),    FALSE (*B*),   FALSE (*S*), FALSE (*O*),
     FALSE (*M3LIB*), FALSE (*LIB*),  TRUE (*LIBX*), FALSE (*PGM*),
